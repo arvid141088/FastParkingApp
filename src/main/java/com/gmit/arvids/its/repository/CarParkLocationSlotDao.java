@@ -14,10 +14,18 @@ public class CarParkLocationSlotDao {
     @Autowired
     private BaseJdbcTemplate baseJdbcTemplate;
 
-    public List<CarParkLocationSlotEntity> getCarParSlot(Integer locationId) {
+    public List<CarParkLocationSlotEntity> getCarParSlots(Integer locationId) {
         Map<String, Object> params = new ImmutableMap.Builder<String, Object>()
                 .put("location_id", locationId)
                 .build();
         return baseJdbcTemplate.queryForList("SELECT * FROM car_park_location_slot WHERE location_id = :location_id", params, CarParkLocationSlotEntity.class);
     }
+
+    public CarParkLocationSlotEntity getCarParSlot(Integer slotId) {
+        Map<String, Object> params = new ImmutableMap.Builder<String, Object>()
+            .put("slot_id", slotId)
+            .build();
+        return baseJdbcTemplate.queryForObject("SELECT * FROM car_park_location_slot WHERE id = :slot_id", params, CarParkLocationSlotEntity.class);
+    }
+
 }

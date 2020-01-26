@@ -1,0 +1,138 @@
+{
+	"info": {
+		"_postman_id": "b78a6f3a-17db-45de-8d30-2d3c36eb9ded",
+		"name": "intelligent-time-saving",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "index",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8000/",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8000/car-park-locations",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8000/car-park-locations",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"car-park-locations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8000/car-park-locations/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8000/car-park-locations/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"car-park-locations",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8000//car-park-slot/2",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"vehicleRegistration\": \"08C40455\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8000//car-park-slot/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"",
+						"car-park-slot",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8000//car-park-slot/2",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"vehicleRegistration\": \"08C40455\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8000//car-park-slot/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"",
+						"car-park-slot",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

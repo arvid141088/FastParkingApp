@@ -29,7 +29,7 @@ public class CarParkLocationService {
     }
 
     public CarParkLocation getCarParkLocation(Integer locationId) {
-        List<CarParkLocationSlotEntity> carParkLocationSlotEntities = carParkLocationSlotDao.getCarParSlot(locationId);
+        List<CarParkLocationSlotEntity> carParkLocationSlotEntities = carParkLocationSlotDao.getCarParSlots(locationId);
         List<LeanCarParkLocationSlot> carParkLocationSlots = carParkLocationSlotEntities.stream()
                 .map(LeanCarParkLocationSlot::from)
                 .collect(Collectors.toList());

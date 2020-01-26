@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS `car_park_location` (
   `gps_latitude` varchar(50) NOT NULL DEFAULT '',
   `gps_longitude` varchar(50) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 ;
 
 -- Data exporting was unselected.
 
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `car_park_location_slot` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `uq_location_id_index` (`location_id`,`index`),
   CONSTRAINT `car_park_location_slot_location_fk` FOREIGN KEY (`location_id`) REFERENCES `car_park_location` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 ;
 
 -- Data exporting was unselected.
 
@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `car_park_slot_booking` (
   `user_id` int(10) unsigned NOT NULL,
   `vehicle_id` int(10) unsigned NOT NULL,
   `start_date_time` datetime NOT NULL,
-  `end_date_time` datetime NOT NULL,
+  `end_date_time` datetime,
   PRIMARY KEY (`id`),
   KEY `car_park_slot_booking_slot_fk` (`slot_id`),
   KEY `car_park_slot_booking_location_fk` (`location_id`),
@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `car_park_slot_booking` (
   CONSTRAINT `car_park_slot_booking_slot_fk` FOREIGN KEY (`slot_id`) REFERENCES `car_park_location_slot` (`id`),
   CONSTRAINT `car_park_slot_booking_user_fk` FOREIGN KEY (`user_id`) REFERENCES `user_info` (`id`),
   CONSTRAINT `car_park_slot_booking_vehicle_fk` FOREIGN KEY (`vehicle_id`) REFERENCES `vehicle` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 ;
 
 -- Data exporting was unselected.
 
@@ -80,7 +80,7 @@ CREATE TABLE IF NOT EXISTS `user_info` (
   UNIQUE KEY `uq_login` (`login`),
   UNIQUE KEY `uq_phone` (`phone`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 ;
 
 -- Data exporting was unselected.
 
@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `user_vehicle` (
   KEY `user_vehicle_vehicle_fk` (`vehicle_id`),
   CONSTRAINT `user_vehicle_user_fk` FOREIGN KEY (`user_id`) REFERENCES `user_info` (`id`),
   CONSTRAINT `user_vehicle_vehicle_fk` FOREIGN KEY (`vehicle_id`) REFERENCES `vehicle` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB ;
 
 -- Data exporting was unselected.
 
@@ -105,7 +105,7 @@ CREATE TABLE IF NOT EXISTS `vehicle` (
   `model` varchar(50) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   UNIQUE KEY `uq_registration` (`registration`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 ;
 
 -- Data exporting was unselected.
 

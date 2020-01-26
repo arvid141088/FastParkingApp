@@ -21,7 +21,7 @@ public class CarParkLocationController {
     private CarParkLocationService carParkLocationService;
 
 
-    @RequestMapping(name = "/car-park-locations", method = RequestMethod.GET)
+    @RequestMapping(path = "/car-park-locations", method = RequestMethod.GET)
     public List<CarParkLocationDto> getCarParkLocations() {
         List<LeanCarParkLocation>  carParkLocations = carParkLocationService.getCarParkLocations();
         return carParkLocations.stream()
@@ -30,7 +30,7 @@ public class CarParkLocationController {
     }
 
 
-    @RequestMapping("/car-park-locations/{locationId}")
+    @RequestMapping(path = "/car-park-locations/{locationId}", method = RequestMethod.GET)
     public RichCarParkLocationDto getCarParkLocationById(@PathVariable Integer locationId) {
         CarParkLocation carParkLocation = carParkLocationService.getCarParkLocation(locationId);
         return RichCarParkLocationDto.from(carParkLocation);
