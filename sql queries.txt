@@ -1,0 +1,40 @@
+//Prepared statement to show all in locations
+            showAll = connection.prepareStatement("SELECT * FROM locations");
+
+USE parking;
+INSERT INTO slots (slotid,slotNumber,locationid) VALUES (1,1,4);
+
+//Update location availability from slots table
+UPDATE locations,slots SET locations.availability = 1 WHERE slots.isFree=1 AND slots.locationID = locations.locationid;
+
+//total available number of slots
+SELECT sum( slots.isFree ) WHERE slots.locationID = ?
+
+//count matching criteria rows
+SELECT COUNT(isFree) FROM slots,locations WHERE slots.isFree =1 AND slots.locationID =1  ;
+
+//Updating isBooked data in slots
+UPDATE slots SET isBooked = NOW() WHERE locationID = 3;
+//Revert changes
+UPDATE slots SET isBooked = NULL WHERE locationID = 3;
+
+//Testing time operation
+SET  @timeVar := ADDTIME(CURTIME(),'120'); #adding time to current time in seconds
+#SELECT @timeVar;
+SELECT isBooked FROM slots WHERE TIME(isBooked) < @timeVar;
+
+
+//Setting availability by counting isFree at specific locations
+//setting to 0
+UPDATE locations,slots SET locations.availability = 0 WHERE (SELECT SUM(slots.isFree) WHERE slots.locationID = locations.locationid)<1;
+
+//setting to 1
+UPDATE locations,slots SET locations.availability = 1 WHERE (SELECT SUM(slots.isFree) WHERE slots.locationID = locations.locationid)>0;
+
+
+//IsBooked queries
+UPDATE slots SET isBooked = CURTIME() WHERE locationID = 2 AND slotID = (SELECT slotID WHERE isFree =1 LIMIT 1) ;
+
+//Wipe all bookings
+UPDATE slots SET isBooked = NULL WHERE isBooked <>'0';
+
