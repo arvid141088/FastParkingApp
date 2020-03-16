@@ -28,4 +28,20 @@ public class CarParkLocationSlotDao {
         return baseJdbcTemplate.queryForObject("SELECT * FROM car_park_location_slot WHERE id = :slot_id", params, CarParkLocationSlotEntity.class);
     }
 
+    public int updateAvailability(Integer slotId, Boolean available) {
+        Map<String, Object> params = new ImmutableMap.Builder<String, Object>()
+                .put("slot_id", slotId)
+                .put("available", available)
+                .build();
+        String sql = "" +
+                "UPDATE car_park_location_slot SET " +
+                "    available = :available " +
+                " WHERE " +
+                "    id = :slot_id ";
+
+        return baseJdbcTemplate.update(sql, params);
+    }
+
+
+
 }

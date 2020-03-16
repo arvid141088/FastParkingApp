@@ -18,6 +18,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+/**
+ * A JDBC wrapper , provides conversion and translation. eg. camelCase to snake_case
+ * Provides communication with Database
+ */
+
 @Repository
 public class BaseJdbcTemplate {
 

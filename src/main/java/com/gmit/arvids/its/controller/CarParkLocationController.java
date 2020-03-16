@@ -17,10 +17,14 @@ import java.util.stream.Collectors;
 @RestController
 public class CarParkLocationController {
 
+
     @Autowired
     private CarParkLocationService carParkLocationService;
 
 
+    /**
+     * Endpoint which returns Full list of car parks
+     */
     @RequestMapping(path = "/car-park-locations", method = RequestMethod.GET)
     public List<CarParkLocationDto> getCarParkLocations() {
         List<LeanCarParkLocation>  carParkLocations = carParkLocationService.getCarParkLocations();
@@ -30,6 +34,11 @@ public class CarParkLocationController {
     }
 
 
+    /**
+     * Endpoint which returns detailed info about specific Location
+     * @param locationId  is an ID which determines the request. eg location 4
+     *
+     */
     @RequestMapping(path = "/car-park-locations/{locationId}", method = RequestMethod.GET)
     public RichCarParkLocationDto getCarParkLocationById(@PathVariable Integer locationId) {
         CarParkLocation carParkLocation = carParkLocationService.getCarParkLocation(locationId);

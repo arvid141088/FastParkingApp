@@ -1,13 +1,7 @@
 package com.gmit.arvids.its.service;
 
-import com.gmit.arvids.its.repository.CarParkLocationSlotBookingDao;
-import com.gmit.arvids.its.repository.CarParkLocationSlotDao;
-import com.gmit.arvids.its.repository.UserVehicleDao;
-import com.gmit.arvids.its.repository.VehicleDao;
-import com.gmit.arvids.its.repository.entity.CarParkLocationSlotEntity;
-import com.gmit.arvids.its.repository.entity.CarParkSlotBookingEntity;
-import com.gmit.arvids.its.repository.entity.UserVehicleEntity;
-import com.gmit.arvids.its.repository.entity.VehicleEntity;
+import com.gmit.arvids.its.repository.*;
+import com.gmit.arvids.its.repository.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,12 +20,21 @@ public class VehicleCarParkSlotService {
     private CarParkLocationSlotDao carParkLocationSlotDao;
     @Autowired
     private CarParkLocationSlotBookingDao carParkLocationSlotBookingDao;
+    @Autowired
+    CarParkLocationDao carParkLocationDao;
 
     @Transactional
     public void registerVehicleCarParkSlot(Integer slotId, String vehicleRegistration) {
         VehicleEntity vehicleEntity = vehicleDao.getVehicleByRegistration(vehicleRegistration);
         List<UserVehicleEntity> users = userVehicleDao.getVehicleActiveUsers(vehicleEntity.getId());
         CarParkLocationSlotEntity slot = carParkLocationSlotDao.getCarParSlot(slotId);
+        //CarParkLocationEntity location = carParkLocationDao.getCarParkLocation(locationId);
+        /**
+         * Exception is thrown if trying to book slot that is already occupied
+         */
+        if (Boolean.FALSE.equals(slot.getAvailable())) {
+            throw new RuntimeException("Car park slot is busy");
+        }
 
         users.forEach(user -> {
 
@@ -43,6 +46,8 @@ public class VehicleCarParkSlotService {
             carParkSlotBookingEntity.setStart(LocalDateTime.now());
 
             carParkLocationSlotBookingDao.insertCarParkBooking(carParkSlotBookingEntity);
+            carParkLocationSlotDao.updateAvailability(slot.getId(), false);
+
         });
     }
 
@@ -62,7 +67,9 @@ public class VehicleCarParkSlotService {
             carParkSlotBookingEntity.setEnd(LocalDateTime.now());
 
             carParkLocationSlotBookingDao.updateCarParkBookingEndTime(carParkSlotBookingEntity);
+            carParkLocationSlotDao.updateAvailability(slot.getId(), true);
         });
     }
+
 
 }
