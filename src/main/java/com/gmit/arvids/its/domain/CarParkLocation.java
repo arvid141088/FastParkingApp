@@ -7,7 +7,7 @@ import lombok.Data;
 import java.util.List;
 
 /**
- * Rich model because contains non-primitive variable (List<LeanCarparkLocationSlots>)</LeanCarparkLocationSlots>
+ * Rich model contains non-primitive variable (List<LeanCarparkLocationSlots>)</LeanCarparkLocationSlots>
  */
 @Data
 @Builder
@@ -23,7 +23,7 @@ public class CarParkLocation {
 
     /**
      * Remapping of objects . Constructing current object from objects
-     * Transition from dto into domain,into entity and so on and back
+     * Transition from dto into domain,into entity
 
      */
     public static CarParkLocation from(CarParkLocationEntity carParkLocationEntity, List<LeanCarParkLocationSlot> carParkLocationSlots) {

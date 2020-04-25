@@ -23,15 +23,15 @@ public class VehicleCarParkSlotService {
     @Autowired
     CarParkLocationDao carParkLocationDao;
 
+    /**
+     * Booking car park slot
+     */
     @Transactional
     public void registerVehicleCarParkSlot(Integer slotId, String vehicleRegistration) {
         VehicleEntity vehicleEntity = vehicleDao.getVehicleByRegistration(vehicleRegistration);
         List<UserVehicleEntity> users = userVehicleDao.getVehicleActiveUsers(vehicleEntity.getId());
         CarParkLocationSlotEntity slot = carParkLocationSlotDao.getCarParSlot(slotId);
         //CarParkLocationEntity location = carParkLocationDao.getCarParkLocation(locationId);
-        /**
-         * Exception is thrown if trying to book slot that is already occupied
-         */
         if (Boolean.FALSE.equals(slot.getAvailable())) {
             throw new RuntimeException("Car park slot is busy");
         }
@@ -72,4 +72,19 @@ public class VehicleCarParkSlotService {
     }
 
 
+    /**
+     * Registering slot availability from RPi
+     */
+    @Transactional
+    public void piRegisterSlotBusy(Integer slotId) {
+        CarParkLocationSlotEntity slot = carParkLocationSlotDao.getCarParSlot(slotId);
+        carParkLocationSlotDao.updateAvailability(slot.getId(), false);
+
+    }
+    @Transactional
+    public void piRegisterSlotFree(Integer slotId) {
+        CarParkLocationSlotEntity slot = carParkLocationSlotDao.getCarParSlot(slotId);
+        carParkLocationSlotDao.updateAvailability(slot.getId(), true);
+
+    }
 }

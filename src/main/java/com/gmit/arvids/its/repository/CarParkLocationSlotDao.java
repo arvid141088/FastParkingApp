@@ -42,6 +42,14 @@ public class CarParkLocationSlotDao {
         return baseJdbcTemplate.update(sql, params);
     }
 
+//    public CarParkLocationSlotEntity getAvailability(Boolean available){
+//        Map<String,Object> params = new ImmutableMap.Builder<String,Object>()
+//                .put("available",available)
+//                .build();
+//        return baseJdbcTemplate.queryForObject( "SELECT * FROM car_park_location_slot WHERE available = :available", params,CarParkLocationSlotEntity.class);
+//    }
+
+
 
 
 }

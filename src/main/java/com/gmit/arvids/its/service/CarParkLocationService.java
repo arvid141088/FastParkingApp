@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class CarParkLocationService {
-//Each table shoukd have DAO
+//Each table should have DAO
     @Autowired
     private CarParkLocationDao carParkLocationDao;
     @Autowired

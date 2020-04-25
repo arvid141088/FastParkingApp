@@ -7,7 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * This controller is registering when car occupies or leaves the occupied space
+ * This controller is registering car park slots availability
+ * for user bookings and Results from Raspberry Pi
  */
 @RestController
 public class VehicleController {
@@ -16,6 +17,7 @@ public class VehicleController {
     private VehicleCarParkSlotService vehicleCarParkSlotService;
 
     /**
+     * *****************************************
      *Vehicle is getting registered at car park
      */
     @RequestMapping(path = "/car-park-slot/{slotId}", method = RequestMethod.POST)
@@ -25,6 +27,7 @@ public class VehicleController {
     }
 
     /**
+     * ***************************
      *Vehicle is leaving car park
      */
     @RequestMapping(path = "/car-park-slot/{slotId}", method = RequestMethod.PUT)
@@ -32,6 +35,27 @@ public class VehicleController {
     public void vehicleLeftCarParkSlot(@PathVariable Integer slotId, @RequestBody RegisterVehicleCarParkSlotDto registerVehicleCarParkSlotDto) {
         vehicleCarParkSlotService.vehicleLeftCarParkSlot(slotId, registerVehicleCarParkSlotDto.getVehicleRegistration());
     }
+
+
+    /**
+     * ***********************************
+     * Pi is registering slot availability
+     */
+    @RequestMapping(path = "/car-park-slot-busy/{slotId}", method = RequestMethod.POST)
+    @ResponseStatus(code = HttpStatus.OK)
+    public void piRegisterSlotBusy(@PathVariable Integer slotId) {
+        vehicleCarParkSlotService.piRegisterSlotBusy(slotId);
+    }
+
+    @RequestMapping(path = "/car-park-slot-free/{slotId}", method = RequestMethod.POST)
+    @ResponseStatus(code = HttpStatus.OK)
+    public void piRegisterSlotFree(@PathVariable Integer slotId) {
+        vehicleCarParkSlotService.piRegisterSlotFree(slotId);
+    }
+
+
+
+
 
 
 
