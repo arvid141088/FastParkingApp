@@ -13,7 +13,6 @@ import java.util.List;
 @Builder
 public class CarParkLocation {
 
-
     private Integer id;
     private String name;
     private String city;
@@ -24,7 +23,6 @@ public class CarParkLocation {
     /**
      * Remapping of objects . Constructing current object from objects
      * Transition from dto into domain,into entity
-
      */
     public static CarParkLocation from(CarParkLocationEntity carParkLocationEntity, List<LeanCarParkLocationSlot> carParkLocationSlots) {
         return CarParkLocation.builder()

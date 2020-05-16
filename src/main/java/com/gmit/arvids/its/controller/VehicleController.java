@@ -17,7 +17,6 @@ public class VehicleController {
     private VehicleCarParkSlotService vehicleCarParkSlotService;
 
     /**
-     * *****************************************
      *Vehicle is getting registered at car park
      */
     @RequestMapping(path = "/car-park-slot/{slotId}", method = RequestMethod.POST)
@@ -27,7 +26,6 @@ public class VehicleController {
     }
 
     /**
-     * ***************************
      *Vehicle is leaving car park
      */
     @RequestMapping(path = "/car-park-slot/{slotId}", method = RequestMethod.PUT)
@@ -36,10 +34,9 @@ public class VehicleController {
         vehicleCarParkSlotService.vehicleLeftCarParkSlot(slotId, registerVehicleCarParkSlotDto.getVehicleRegistration());
     }
 
-
     /**
-     * ***********************************
      * Pi is registering slot availability
+     * @param slotId is an ID which determines request.
      */
     @RequestMapping(path = "/car-park-slot-busy/{slotId}", method = RequestMethod.POST)
     @ResponseStatus(code = HttpStatus.OK)

@@ -17,10 +17,8 @@ import java.util.stream.Collectors;
 @RestController
 public class CarParkLocationController {
 
-
     @Autowired
     private CarParkLocationService carParkLocationService;
-
 
     /**
      * Endpoint which returns Full list of car parks
@@ -32,7 +30,6 @@ public class CarParkLocationController {
                 .map(CarParkLocationDto::from)
                 .collect(Collectors.toList());
     }
-
 
     /**
      * Endpoint which returns detailed info about specific Location

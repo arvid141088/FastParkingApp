@@ -24,7 +24,7 @@ public class VehicleCarParkSlotService {
     CarParkLocationDao carParkLocationDao;
 
     /**
-     * Booking car park slot
+     * Car park slot bookings. Registering vehicles entering and leaving car parks.
      */
     @Transactional
     public void registerVehicleCarParkSlot(Integer slotId, String vehicleRegistration) {

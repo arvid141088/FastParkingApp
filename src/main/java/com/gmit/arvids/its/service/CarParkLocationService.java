@@ -15,12 +15,15 @@ import java.util.stream.Collectors;
 
 @Service
 public class CarParkLocationService {
-//Each table should have DAO
+
     @Autowired
     private CarParkLocationDao carParkLocationDao;
     @Autowired
     private CarParkLocationSlotDao carParkLocationSlotDao;
 
+    /**
+     * Getting information about all locations
+     */
     public List<LeanCarParkLocation> getCarParkLocations() {
         List<CarParkLocationEntity> carParkLocationEntities = carParkLocationDao.getCarParkLocations();
         return carParkLocationEntities.stream()
@@ -28,6 +31,9 @@ public class CarParkLocationService {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * Getting information about specific location
+     */
     public CarParkLocation getCarParkLocation(Integer locationId) {
         List<CarParkLocationSlotEntity> carParkLocationSlotEntities = carParkLocationSlotDao.getCarParSlots(locationId);
         List<LeanCarParkLocationSlot> carParkLocationSlots = carParkLocationSlotEntities.stream()
