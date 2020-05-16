@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+
+    android:orientation="vertical"
+    android:background="@drawable/yellowline">
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/mapView"
+        android:apiKey="AIzaSyA1d78VK-LYWP0LYBnDo0byQiQ9lwEKMRY"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1.2"
+        android:clickable="true"
+        android:enabled="true" />
+
+    <TextView
+        android:id="@+id/dataText2"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="You can select marker on the map and navigate to specific location"
+        android:textAlignment="center"
+        android:textColor="#0f0f0f"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1.2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/dataText1"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:text="TextView"
+                android:textColor="#FBFBFA"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+</LinearLayout>
