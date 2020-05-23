@@ -26,7 +26,7 @@
         <activity android:name=".WelcomeActivity"></activity>
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyA1d78VK-LYWP0LYBnDo0byQiQ9lwEKMRY" />
+            android:value="Removed for security reasons" />
 
     </application>
 
